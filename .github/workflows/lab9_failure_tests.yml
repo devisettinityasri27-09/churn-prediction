@@ -1,3 +1,4 @@
+
 name: Lab 9 - Failure and Recovery Tests
 
 on:
@@ -8,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -24,7 +26,8 @@ jobs:
         run: python src/mlops_pipeline/churn_prediction_pipeline.py
 
       - name: Run Lab 9 failure and recovery tests
-        run: python src/mlops_pipeline/10_failure_injection.py
+        run: |
+          python -c "import runpy; runpy.run_path('src/mlops_pipeline/10_failure_injection.py', run_name='__main__')"
 
       - name: Upload Lab 9 evidence
         if: always()
