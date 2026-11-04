@@ -28,3 +28,17 @@ Thumbs.db
 
 # Python environment files
 .env
+# Generated ML artifacts
+artifacts/
+data/processed/
+data/monitoring/
+data/raw/archive/
+outputs/
+reports/
+
+# Generated model files
+models/*.pkl
+deployment/*.pkl
+
+# MLflow and experiment outputs
+mlruns/
